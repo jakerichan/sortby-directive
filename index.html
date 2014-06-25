@@ -1,0 +1,29 @@
+<html lang="en" ng-app="app">
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.7/angular.min.js"></script>
+
+    <script type="text/javascript" src="TableCtrl.js"></script>
+    <script type="text/javascript" src="SortBy.js"></script>
+  </head>
+  <body>
+    <!--  Set sort-by to the default sort.attribute value and direction with reverseModel  -->
+    <table ng-controller="TableCtrl" sort-by="sort.attribute" reverse-model="sort.reverse">
+      <thead>
+        <tr>
+        <!--  Each sortable th will use attribute to determine the attribute on the model to sort by  -->
+          <th sort-attribute="name">Name</th>
+          <th sort-attribute="color">Fav Color</th>
+          <th sort-attribute="age">Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--  Angular automatically sorts here when sort.attribute and reverse changes  -->
+        <tr ng-repeat="user in users | orderBy:sort.attribute:sort.reverse">
+          <td class="name">{{user.name}}</td>
+          <td class="color">{{user.color}}</td>
+          <td class="age">{{user.age}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
